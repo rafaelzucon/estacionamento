@@ -2,6 +2,8 @@ package com.api.pcj18sb273.services;
 
 import com.api.pcj18sb273.models.ParkingSpotModel;
 import com.api.pcj18sb273.repositories.ParkingSpotRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -34,10 +36,19 @@ public class ParkingSpotService {
     public boolean existsByApartmentAndBlock(String apartment, String block){
         return parkingSpotRepository.existsByApartmentAndBlock(apartment, block);
     }
-    public List<ParkingSpotModel> findAll() {
-        return parkingSpotRepository.findAll();
+//    public List<ParkingSpotModel> findAll() {
+//        return parkingSpotRepository.findAll();
+//    }
+    //INSERINDO PAGINAÇÃO NO findAll
+    public Page<ParkingSpotModel> findAll(Pageable pageable) {
+        return parkingSpotRepository.findAll(pageable);
     }
     public Optional<ParkingSpotModel> findById(UUID id) {
         return parkingSpotRepository.findById(id);
+    }
+
+    @Transactional
+    public void delete(ParkingSpotModel parkingSpotModel) {
+        parkingSpotRepository.delete(parkingSpotModel);
     }
 }
