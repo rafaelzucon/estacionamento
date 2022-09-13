@@ -12,10 +12,4 @@ public class PcJ18Sb273Application {
 	public static void main(String[] args) {
 		SpringApplication.run(PcJ18Sb273Application.class, args);
 	}
-
-	@GetMapping("/")
-	public String index(){
-		return "Hello World Spring!!";
-	}
-
 }
