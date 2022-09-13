@@ -31,11 +31,12 @@ public class ParkingSpotService {
     public boolean existsByParkingSpotNumber(String parkingSpotNumber) {
         return parkingSpotRepository.existsByParkingSpotNumber(parkingSpotNumber);
     }
-
+    public boolean existsByApartmentAndBlock(String apartment, String block){
+        return parkingSpotRepository.existsByApartmentAndBlock(apartment, block);
+    }
     public List<ParkingSpotModel> findAll() {
         return parkingSpotRepository.findAll();
     }
-
     public Optional<ParkingSpotModel> findById(UUID id) {
         return parkingSpotRepository.findById(id);
     }

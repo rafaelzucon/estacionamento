@@ -36,6 +36,10 @@ public class ParkingSpotController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: Parking Spot Car is already in use.");
         }
 
+        if(parkingSpotService.existsByApartmentAndBlock(parkingSpotDto.getApartment(), parkingSpotDto.getBlock())){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: Parking Spot already registered for this apartment/blck!.");
+        }
+
 
         var parkingSpotModel = new ParkingSpotModel();
         BeanUtils.copyProperties(parkingSpotDto, parkingSpotModel);
